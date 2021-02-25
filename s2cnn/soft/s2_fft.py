@@ -4,6 +4,7 @@ import torch
 import torch.cuda
 from string import Template
 from s2cnn.utils.decorator import cached_dirpklgz
+import hydra
 
 
 # inspired by https://gist.github.com/szagoruyko/89f83b6f5f4833d3c8adf81ee49f22a8
@@ -112,7 +113,7 @@ def _setup_wigner(b, nl, weighted, device):
     return dss.contiguous()
 
 
-@cached_dirpklgz("cache/setup_s2_fft")
+@cached_dirpklgz(hydra.utils.to_absolute_path("cache/setup_s2_fft"))
 def _setup_s2_fft(b, nl, weighted):
     from lie_learn.representations.SO3.wigner_d import wigner_d_matrix
     import lie_learn.spaces.S3 as S3

@@ -12,4 +12,5 @@ setup(
     url="https://github.com/AMLab-Amsterdam/s2cnn",
     long_description=open(os.path.join(os.path.dirname(__file__), "README.md"), encoding='utf-8').read(),
     packages=find_packages(exclude=["build"]),
+    zip_safe=False
 )

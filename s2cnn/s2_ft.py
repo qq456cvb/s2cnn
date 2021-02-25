@@ -3,6 +3,7 @@ import torch
 import numpy as np
 from functools import lru_cache
 from s2cnn.utils.decorator import cached_dirpklgz
+import hydra
 
 
 def s2_rft(x, b, grid):
@@ -24,7 +25,7 @@ def s2_rft(x, b, grid):
     return x
 
 
-@cached_dirpklgz("cache/setup_s2_ft")
+@cached_dirpklgz(hydra.utils.to_absolute_path("cache/setup_s2_ft"))
 def __setup_s2_ft(b, grid):
     from lie_learn.representations.SO3.wigner_d import wigner_D_matrix
 

@@ -6,6 +6,7 @@ from .so3_fft import SO3_fft_real, SO3_ifft_real
 from s2cnn.utils.complex import complex_mm
 from functools import lru_cache
 from s2cnn.utils.decorator import cached_dirpklgz
+import hydra
 
 
 def so3_rotation(x, alpha, beta, gamma):
@@ -48,7 +49,7 @@ def so3_rotation(x, alpha, beta, gamma):
     return z
 
 
-@cached_dirpklgz("cache/setup_so3_rotation")
+@cached_dirpklgz(hydra.utils.to_absolute_path("cache/setup_so3_rotation"))
 def __setup_so3_rotation(b, alpha, beta, gamma):
     from lie_learn.representations.SO3.wigner_d import wigner_D_matrix
 
